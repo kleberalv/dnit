@@ -5,15 +5,12 @@ namespace App\Models\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alunos extends Model
+class Cursos extends Model
 {
+    use HasFactory;
 
     protected $table= [
-        'nome',
-        'email',
-        'datanasc'
+        'titulo'
 
     ];
-
-    use HasFactory;
 }
