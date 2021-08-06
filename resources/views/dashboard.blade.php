@@ -9,44 +9,64 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                
-            <table class="table">
+
+                <?php $con=mysqli_connect("localhost","root","","laravel");
+	                $result=mysqli_query($con,"SELECT*FROM alunos");?>                
+            <table class="table"> <h3><center> Lista de Alunos </center></h3>
   
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Matrícula</th>
-                        <th scope="col">Curso</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Data Nasc</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>1472</td>
-                            <td>Física</td>                          
-                    </tr>
-
-                    <tr>
-                        <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>5836</td>
-                            <td>Biologia</td>
-                    </tr>
-    
-                    <tr>
-                        <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>9014</td>
-                            <td>Química</td>
-                    </tr>
+                <?php while($row=mysqli_fetch_array($result)){?>
+                        <tr>
+                                <td> <?php echo $row['idAlunos'];?> </td>
+	                            <td> <?php echo $row['nome'];?> </td>
+	                            <td> <?php echo $row['email'];?> </td>
+	                            <td> <?php echo $row['datanasc'];?> </td>                         
+                        </tr>
                 </tbody>
+                <?php } mysqli_close($con); ?>
             </table>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+
+                <?php $con=mysqli_connect("localhost","root","","laravel");
+	                $result=mysqli_query($con,"SELECT*FROM curso");?>                
+            <table class="table"><h3><center> Lista de Cursos </center></h3>
+  
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                <?php while($row=mysqli_fetch_array($result)){?>
+                        <tr>
+                                <td> <?php echo $row['idCurso'];?> </td>
+	                            <td> <?php echo $row['titulo'];?> </td>
+	                            <td> <?php echo $row['descricao'];?> </td>                 
+                        </tr>
+                </tbody>
+                <?php } mysqli_close($con); ?>
+            </table>
+                </div>
+            </div>
+        </div>
+
 </x-app-layout>
